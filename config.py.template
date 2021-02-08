@@ -1,0 +1,3 @@
+ROOT = 'example'
+PROJECT = 'default'
+BROKER = 'mqtt.example.tld'
