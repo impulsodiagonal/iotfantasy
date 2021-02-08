@@ -74,8 +74,10 @@ class Light(Bus):
     def __init__(self):
         super().__init__()
         self.state = random.choice([False, True])
-        self.x = random.randrange(236) + 10
-        self.y = random.randrange(172) + 10
+        self.location = {
+            'x': random.randrange(236) + 10,
+            'y': random.randrange(172) + 10
+        }
         
     def do_action(self):
         print(f'Change state of {self.uuid} -> {not self.state}')
@@ -91,10 +93,10 @@ class Light(Bus):
     def draw(self):
         # draw it on or off
         if self.state:
-            pyxel.blt(self.x, self.y, 0, 0, 0, 7, 15, 0)
-            pyxel.text(self.x, self.y-5, f'{self.uuid[:4]}:{self.uuid[-4:]}', 7)
+            pyxel.blt(self.location['x'], self.location['y'], 0, 0, 0, 7, 15, 0)
+            pyxel.text(self.location['x'], self.location['y']-5, f'{self.uuid[:4]}:{self.uuid[-4:]}', 7)
         else:
-            pyxel.blt(self.x, self.y, 0, 8, 0, 7, 15, 0)
+            pyxel.blt(self.location['x'], self.location['y'], 0, 8, 0, 7, 15, 0)
         
 
 class App:
